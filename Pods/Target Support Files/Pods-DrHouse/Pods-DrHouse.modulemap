@@ -1,0 +1,6 @@
+framework module Pods_DrHouse {
+  umbrella header "Pods-DrHouse-umbrella.h"
+
+  export *
+  module * { export * }
+}
