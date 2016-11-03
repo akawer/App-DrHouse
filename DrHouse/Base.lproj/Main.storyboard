@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="40" width="283" height="25"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMT-kQ-q6N" customClass="UpgradedButton" customModule="DrHouse" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="283" height="37"/>
@@ -102,6 +102,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="JEj-aN-Zxc" eventType="touchUpInside" id="BCD-NE-8Ue"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -124,6 +127,10 @@
                             <constraint firstAttribute="trailing" secondItem="QBH-FD-ZUu" secondAttribute="trailing" id="z5Z-Nf-JOk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="Ylu-2d-qP3" id="ADD-We-aS4"/>
+                        <outlet property="pwdField" destination="cBd-LR-Ryh" id="OPO-uK-y8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1l-DV-zio" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

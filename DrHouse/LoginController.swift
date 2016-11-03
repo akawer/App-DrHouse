@@ -15,10 +15,12 @@ import FBSDKLoginKit
 
 class LoginController: UIViewController {
     
-
+    @IBOutlet weak var emailField: UpgradedField!
+    @IBOutlet weak var pwdField: UpgradedField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     // maybe delete this function to avoid unnecessary warnings
@@ -26,7 +28,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         //Do any additional bla bla
     }
-       // MARK: - Functions
+    // MARK: - Functions
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
         
@@ -42,7 +44,7 @@ class LoginController: UIViewController {
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.firebaseAuth(credential)
             }
-    }
+        }
     }
     
     func firebaseAuth(_ credential: FIRAuthCredential) {
@@ -52,17 +54,26 @@ class LoginController: UIViewController {
             } else {
                 print("NEGROKO: Successfully authenticated with Firebase")
             }
+        })
+    }
+    
+    
+    @IBAction func signInTapped(_ sender: Any) {
+        if let email = emailField.text, let pwd = pwdField.text {
+            // set alert here if needed to in Final app
+            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                if error == nil {
+                    print("NEGROKO: Email user authenticated with Firebasse")
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                        if error != nil {
+                            print("NEGROKO: Unable to authenticate with Firebasse using email")
+                        } else {
+                            print("NEGROKO: Successfully authenticated with Firebasse")
+                        }
+                    })
+                }
             })
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        }
+}
 }
