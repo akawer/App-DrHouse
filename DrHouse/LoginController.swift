@@ -28,7 +28,7 @@ class LoginController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("NEGROKO: ID found in Keychain")
-            performSegue(withIdentifier: "goToSegue", sender: nil)
+            performSegue(withIdentifier: "goToFeed", sender: nil)
         }
     }
     
