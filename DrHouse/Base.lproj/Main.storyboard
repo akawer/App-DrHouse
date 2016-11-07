@@ -216,22 +216,22 @@
                                     <constraint firstAttribute="height" constant="65" id="mgU-wV-c0O"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="339" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lxq-ff-v7W">
-                                <rect key="frame" x="0.0" y="162" width="375" height="505"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="339" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lxq-ff-v7W">
+                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="339" id="SD9-BI-Lgv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="339" id="SD9-BI-Lgv" customClass="PostCell" customModule="DrHouse" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="339"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SD9-BI-Lgv" id="vtl-Xc-els">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XO-0H-wHw" customClass="UpgradedView" customModule="DrHouse" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8" width="343" height="322"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="323"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Jw-gU-OLs">
-                                                            <rect key="frame" x="8" y="8" width="327" height="281"/>
+                                                            <rect key="frame" x="8" y="8" width="327" height="282"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xn0-Ri-2TI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
@@ -243,13 +243,13 @@
                                                                                 <constraint firstAttribute="height" constant="60" id="sFy-t2-Vhg"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alergic reaction!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-7c-eZy">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-7c-eZy">
                                                                             <rect key="frame" x="60" y="0.0" width="207" height="60"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                             <color key="textColor" red="0.86666666670000003" green="0.17254901959999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-SG-UWV" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-SG-UWV">
                                                                             <rect key="frame" x="267" y="0.0" width="60" height="60"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="60" id="frg-iX-n12"/>
@@ -259,11 +259,14 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tHr-Do-mtq">
-                                                                    <rect key="frame" x="0.0" y="68" width="327" height="120"/>
+                                                                    <rect key="frame" x="0.0" y="68" width="327" height="156"/>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bAe-iH-ary">
-                                                                    <rect key="frame" x="0.0" y="196" width="327" height="85"/>
+                                                                    <rect key="frame" x="0.0" y="232" width="327" height="50"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="qlq-5b-eTh"/>
+                                                                    </constraints>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -271,7 +274,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jp0-Da-Tam">
-                                                            <rect key="frame" x="251" y="297" width="79" height="22"/>
+                                                            <rect key="frame" x="251" y="298" width="79" height="22"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1X1-Z3-O1p">
                                                                     <rect key="frame" x="0.0" y="0.0" width="36.5" height="22"/>
@@ -282,7 +285,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FG-Xb-xlN">
                                                                     <rect key="frame" x="41.5" y="0.0" width="37.5" height="22"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -299,6 +302,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.81176470590000005" green="0.84705882349999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="3XO-0H-wHw" secondAttribute="bottom" constant="8" id="4Dr-EM-gyi"/>
                                                 <constraint firstItem="3XO-0H-wHw" firstAttribute="leading" secondItem="vtl-Xc-els" secondAttribute="leading" constant="16" id="MKe-YE-Ql7"/>
@@ -306,6 +310,13 @@
                                                 <constraint firstItem="3XO-0H-wHw" firstAttribute="top" secondItem="vtl-Xc-els" secondAttribute="top" constant="8" id="y5D-W7-Ehn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="caption" destination="bAe-iH-ary" id="sLy-HR-Mnc"/>
+                                            <outlet property="likesLbl" destination="5FG-Xb-xlN" id="8fd-GI-AZy"/>
+                                            <outlet property="postImg" destination="tHr-Do-mtq" id="RzV-at-T5o"/>
+                                            <outlet property="profileImg" destination="DoY-of-945" id="Wld-FZ-clj"/>
+                                            <outlet property="usernameLbl" destination="0ty-7c-eZy" id="5Iu-ku-DcK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -313,7 +324,7 @@
                         <color key="backgroundColor" red="0.81176470590000005" green="0.84705882349999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="M4B-Re-jQQ" firstAttribute="top" secondItem="5ru-ba-m2f" secondAttribute="bottom" constant="16" id="6zC-Af-Ng6"/>
-                            <constraint firstItem="Lxq-ff-v7W" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="bottom" constant="16" id="Dwm-0g-rwn"/>
+                            <constraint firstItem="Lxq-ff-v7W" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="bottom" constant="8" id="Dwm-0g-rwn"/>
                             <constraint firstItem="jEW-rH-dJQ" firstAttribute="top" secondItem="Lxq-ff-v7W" secondAttribute="bottom" id="Hwv-RZ-ugb"/>
                             <constraint firstAttribute="trailing" secondItem="5ru-ba-m2f" secondAttribute="trailing" id="Olt-5Q-f6l"/>
                             <constraint firstItem="Lxq-ff-v7W" firstAttribute="leading" secondItem="Ocf-Ca-5QI" secondAttribute="leading" id="Paf-kp-gDI"/>
@@ -325,6 +336,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Lxq-ff-v7W" id="slj-Bh-Fzb"/>
                         <segue destination="JEj-aN-Zxc" kind="show" identifier="goToSignIn" id="Z5E-TK-m56"/>
                     </connections>
                 </viewController>
