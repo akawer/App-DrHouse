@@ -13,6 +13,7 @@
 		28324B101DB93D94007989AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28324B0F1DB93D94007989AF /* Assets.xcassets */; };
 		28324B131DB93D94007989AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28324B111DB93D94007989AF /* LaunchScreen.storyboard */; };
 		2834AA4A1DCACF13009FF7C9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2834AA491DCACF13009FF7C9 /* LoginController.swift */; };
+		289634471DCBC4A600425B3D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289634461DCBC4A600425B3D /* FeedVC.swift */; };
 		28CFF5321DCB580A007E1A2D /* UpgradedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF5311DCB580A007E1A2D /* UpgradedView.swift */; };
 		28CFF5351DCB58E5007E1A2D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF5341DCB58E5007E1A2D /* Constants.swift */; };
 		28CFF5371DCB5B40007E1A2D /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF5361DCB5B40007E1A2D /* RoundButton.swift */; };
@@ -32,6 +33,7 @@
 		28324B121DB93D94007989AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28324B141DB93D94007989AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2834AA491DCACF13009FF7C9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		289634461DCBC4A600425B3D /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		28CFF5311DCB580A007E1A2D /* UpgradedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradedView.swift; sourceTree = "<group>"; };
 		28CFF5341DCB58E5007E1A2D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28CFF5361DCB5B40007E1A2D /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				2834AA491DCACF13009FF7C9 /* LoginController.swift */,
+				289634461DCBC4A600425B3D /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				28CFF5371DCB5B40007E1A2D /* RoundButton.swift in Sources */,
 				28CFF5321DCB580A007E1A2D /* UpgradedView.swift in Sources */,
 				28324B091DB93D94007989AF /* AppDelegate.swift in Sources */,
+				289634471DCBC4A600425B3D /* FeedVC.swift in Sources */,
 				28CFF5391DCB5CD0007E1A2D /* UpgradedField.swift in Sources */,
 				28CFF53B1DCB5DBD007E1A2D /* UpgradedButton.swift in Sources */,
 				28CFF5351DCB58E5007E1A2D /* Constants.swift in Sources */,
