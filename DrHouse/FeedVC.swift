@@ -17,6 +17,8 @@ class FeedVC: UIViewController {
         print("NEGROKO: ID removed from Keychain \(keyChainResult)")
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+        
+        
     }
     
 

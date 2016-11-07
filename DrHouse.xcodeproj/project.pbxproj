@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281B1B6C1DD0900A0044662C /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281B1B6B1DD0900A0044662C /* CircularView.swift */; };
 		2831FA841DB96B580043BA74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2831FA831DB96B580043BA74 /* GoogleService-Info.plist */; };
 		28324B091DB93D94007989AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28324B081DB93D94007989AF /* AppDelegate.swift */; };
 		28324B0E1DB93D94007989AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28324B0C1DB93D94007989AF /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		060165B4659D8DBA63B97862 /* Pods-DrHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrHouse.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrHouse/Pods-DrHouse.release.xcconfig"; sourceTree = "<group>"; };
 		24C26C68906F47ABE1815336 /* Pods-DrHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrHouse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrHouse/Pods-DrHouse.debug.xcconfig"; sourceTree = "<group>"; };
+		281B1B6B1DD0900A0044662C /* CircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		2831FA831DB96B580043BA74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28324B051DB93D94007989AF /* DrHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28324B081DB93D94007989AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				28CFF5361DCB5B40007E1A2D /* RoundButton.swift */,
 				28CFF5381DCB5CD0007E1A2D /* UpgradedField.swift */,
 				28CFF53A1DCB5DBD007E1A2D /* UpgradedButton.swift */,
+				281B1B6B1DD0900A0044662C /* CircularView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -173,7 +176,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Aaron Kawer";
 				TargetAttributes = {
 					28324B041DB93D90007989AF = {
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281B1B6C1DD0900A0044662C /* CircularView.swift in Sources */,
 				2834AA4A1DCACF13009FF7C9 /* LoginController.swift in Sources */,
 				28CFF5371DCB5B40007E1A2D /* RoundButton.swift in Sources */,
 				28CFF5321DCB580A007E1A2D /* UpgradedView.swift in Sources */,
@@ -403,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24C26C68906F47ABE1815336 /* Pods-DrHouse.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DrHouse/DrHouse.entitlements;
 				DEVELOPMENT_TEAM = 3VBM7GV9R7;
@@ -418,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 060165B4659D8DBA63B97862 /* Pods-DrHouse.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DrHouse/DrHouse.entitlements;
 				DEVELOPMENT_TEAM = 3VBM7GV9R7;
