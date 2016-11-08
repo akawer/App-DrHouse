@@ -254,7 +254,7 @@
                                                                                 <constraint firstAttribute="height" constant="60" id="sFy-t2-Vhg"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-7c-eZy">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-7c-eZy">
                                                                             <rect key="frame" x="60" y="0.0" width="207" height="60"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                             <color key="textColor" red="0.86666666670000003" green="0.17254901959999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,6 +323,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="bAe-iH-ary" id="sLy-HR-Mnc"/>
+                                            <outlet property="likeImg" destination="6hV-SG-UWV" id="5uc-50-ONQ"/>
                                             <outlet property="likesLbl" destination="5FG-Xb-xlN" id="8fd-GI-AZy"/>
                                             <outlet property="postImg" destination="tHr-Do-mtq" id="RzV-at-T5o"/>
                                             <outlet property="profileImg" destination="DoY-of-945" id="Wld-FZ-clj"/>

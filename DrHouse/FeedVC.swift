@@ -123,10 +123,33 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     print("NEGROKO: Unable to upload image to Firebasee torage")
                 } else {
                     print("NEGROKO: Successfully uploaded image to Firebase storage")
-                    _ = metadata?.downloadURL()?.absoluteString
+                    //_ = metadata?.downloadURL()?.absoluteString
+                    
+                    // erase this and use line above only
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: url)
+                    }
                 }
             }
         }
+    }
+    
+    func postToFirebase(imgUrl: String) {
+        let post: Dictionary<String, AnyObject> = [
+            "caption": captionField.text! as AnyObject,
+            "imageUrl": imgUrl as AnyObject,
+            "likes": 0 as AnyObject
+        ]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
     }
     
     
