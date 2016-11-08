@@ -43,14 +43,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
-    
-    @IBAction func borrarEsteBtn(_ sender: Any) {
-        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("NEGROKO: ID removed from Keychain \(keyChainResult)")
-        try! FIRAuth.auth()?.signOut()
-        performSegue(withIdentifier: "goToSignIn", sender: nil)
-    }
-    
 
     
 
