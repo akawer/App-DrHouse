@@ -12,6 +12,7 @@ target 'DrHouse' do
   pod 'Firebase/Storage’
   pod 'FBSDKLoginKit'
   pod 'SwiftKeychainWrapper'
-
+  pod 'SwiftyTimer'
+  pod 'NSDate+TimeAgo'
 
 end

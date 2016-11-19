@@ -29,12 +29,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NSDate+TimeAgo.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-DrHouse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyTimer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,17 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D819F20119C7722991FA335E2C1B516</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7CC118018DA3CCFAB23D2BEE07C83A11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8C75720AE37584008BE401892B0A4B03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9889573393C5B2048FD9DE1E7DBE728B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4E214A59DCF867FD8BDDB7B8DC9CE07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD1DC386A73FE1C27E95F15998CC33C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

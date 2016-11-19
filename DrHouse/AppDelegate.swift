@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // If the user is already logged in
+        if let _ = FIRAuth.auth()?.currentUser {
+            // Navigate to the FeedVC
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeedVC")
+            window?.makeKeyAndVisible()
+        }
+        
         return true
     }
     

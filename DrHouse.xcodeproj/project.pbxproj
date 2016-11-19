@@ -23,6 +23,9 @@
 		28CFF5371DCB5B40007E1A2D /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF5361DCB5B40007E1A2D /* RoundButton.swift */; };
 		28CFF5391DCB5CD0007E1A2D /* UpgradedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF5381DCB5CD0007E1A2D /* UpgradedField.swift */; };
 		28CFF53B1DCB5DBD007E1A2D /* UpgradedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CFF53A1DCB5DBD007E1A2D /* UpgradedButton.swift */; };
+		28F53F121DDFCC57009D5947 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F53F111DDFCC57009D5947 /* EditProfileVC.swift */; };
+		28F53F141DDFD27D009D5947 /* UIImageView+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F53F131DDFD27D009D5947 /* UIImageView+Firebase.swift */; };
+		28F53F161DDFD987009D5947 /* TimestampLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F53F151DDFD987009D5947 /* TimestampLabel.swift */; };
 		C1B0EF8D81DB996BAAFBDD50 /* Pods_DrHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7474CEDC09CC1A7BB49DB5 /* Pods_DrHouse.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,10 @@
 		28CFF5381DCB5CD0007E1A2D /* UpgradedField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradedField.swift; sourceTree = "<group>"; };
 		28CFF53A1DCB5DBD007E1A2D /* UpgradedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradedButton.swift; sourceTree = "<group>"; };
 		28D62FD91DCAD92B009BB5B0 /* DrHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrHouse.entitlements; sourceTree = "<group>"; };
+		28F53F111DDFCC57009D5947 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		28F53F131DDFD27D009D5947 /* UIImageView+Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Firebase.swift"; sourceTree = "<group>"; };
+		28F53F151DDFD987009D5947 /* TimestampLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampLabel.swift; sourceTree = "<group>"; };
+		28F53F171DDFDBE0009D5947 /* DrHouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrHouse-Bridging-Header.h"; sourceTree = "<group>"; };
 		2C7474CEDC09CC1A7BB49DB5 /* Pods_DrHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +112,7 @@
 				28324B111DB93D94007989AF /* LaunchScreen.storyboard */,
 				28324B141DB93D94007989AF /* Info.plist */,
 				28324B0C1DB93D94007989AF /* Main.storyboard */,
+				28F53F171DDFDBE0009D5947 /* DrHouse-Bridging-Header.h */,
 			);
 			path = DrHouse;
 			sourceTree = "<group>";
@@ -134,6 +142,7 @@
 				28CFF5381DCB5CD0007E1A2D /* UpgradedField.swift */,
 				28CFF5311DCB580A007E1A2D /* UpgradedView.swift */,
 				287686EF1DD0B7A200EE4E3F /* PostCell.swift */,
+				28F53F151DDFD987009D5947 /* TimestampLabel.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			children = (
 				2834AA491DCACF13009FF7C9 /* LoginController.swift */,
 				289634461DCBC4A600425B3D /* FeedVC.swift */,
+				28F53F111DDFCC57009D5947 /* EditProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -151,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				28CFF5341DCB58E5007E1A2D /* Constants.swift */,
+				28F53F131DDFD27D009D5947 /* UIImageView+Firebase.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 					28324B041DB93D90007989AF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3VBM7GV9R7;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -301,10 +313,13 @@
 				28324B091DB93D94007989AF /* AppDelegate.swift in Sources */,
 				2879B4D21DD1ECEB006E7418 /* DataService.swift in Sources */,
 				289634471DCBC4A600425B3D /* FeedVC.swift in Sources */,
+				28F53F161DDFD987009D5947 /* TimestampLabel.swift in Sources */,
 				28CFF5391DCB5CD0007E1A2D /* UpgradedField.swift in Sources */,
+				28F53F141DDFD27D009D5947 /* UIImageView+Firebase.swift in Sources */,
 				28CFF53B1DCB5DBD007E1A2D /* UpgradedButton.swift in Sources */,
 				28CFF5351DCB58E5007E1A2D /* Constants.swift in Sources */,
 				287686F01DD0B7A200EE4E3F /* PostCell.swift in Sources */,
+				28F53F121DDFCC57009D5947 /* EditProfileVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,12 +444,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DrHouse/DrHouse.entitlements;
 				DEVELOPMENT_TEAM = 3VBM7GV9R7;
 				INFOPLIST_FILE = DrHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AaronKawer.DrHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrHouse/DrHouse-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -445,12 +463,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DrHouse/DrHouse.entitlements;
 				DEVELOPMENT_TEAM = 3VBM7GV9R7;
 				INFOPLIST_FILE = DrHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AaronKawer.DrHouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrHouse/DrHouse-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

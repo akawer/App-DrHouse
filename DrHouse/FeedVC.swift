@@ -26,30 +26,73 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 340.0
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
-        DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                for snap in snapshot {
-                    print("SNAP: \(snap)")
+        
+        if let ref = DataService.ds.REF_MY_POSTS {
+            
+            // Observe new data
+            ref.observe(.childAdded, with: { (snapshot) in
+                
+                DispatchQueue.main.async {
+                    if snapshot.exists() {
+                        
+                            
+                        if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
+                            let key = snapshot.key
+                            let post = Post(postKey: key, postData: postDict)
+                            post.postRef = snapshot.ref
+                            self.posts.insert(post, at: 0)
+                        }
+                        
+                    }
+                    self.tableView.reloadData()
+                }
+            })
+            
+            // Observe changes
+            ref.observe(.childChanged, with: { (snapshot: FIRDataSnapshot) in
+                if snapshot.exists() {
                     
-                    if let postDict = snap.value as? Dictionary<String, AnyObject> {
-                        let key = snap.key
-                        let post = Post(postKey: key, postData: postDict)
-                        self.posts.append(post)
+                    DispatchQueue.main.async {
+                        if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
+                            let key = snapshot.key
+                            
+                            // Replace the old post with a new one
+                            var index = 0
+                            for post in self.posts {
+                                if key == post.postKey {
+                                    break
+                                }
+                                index += 1
+                            }
+                            self.posts.remove(at: index)
+                            
+                            let post = Post(postKey: key, postData: postDict)
+                            post.postRef = snapshot.ref
+                            self.posts.insert(post, at: index)
+                        }
+                        self.tableView.reloadData()
                     }
                 }
-            }
-            self.tableView.reloadData()
-        })
+            })
+        }
         
         
     }
+    
+    // -------------------------
+    // MARK - Table View
+    // -------------------------
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -75,24 +118,44 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-//            imageAdd.image = image
-//            imageSelected = true
-//        } else {
-//            print("NEGROKO: A valid image wasn't selected")
-//        }
-//        imagePicker.dismiss(animated: true, completion: nil)
-//    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let post = posts[indexPath.row]
+            // Remove from Firebase
+            post.postRef.removeValue()
+            // Delete the image
+            if post.imageUrl.characters.count > 0 { // if it has a URL
+                FIRStorage.storage().reference(forURL: post.imageUrl).delete(completion: { (error: Error?) in
+                    
+                })
+            }
+            // Remove from the local array
+            posts.remove(at: indexPath.row)
+            // Reload the UI
+            tableView.reloadData()
+        default:
+            break
+        }
+    }
+    
+    
+    // -------------------------
+    // MARK - Image Picking
+    // -------------------------
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-                if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-                    imageAdd.image = image
-                    imageSelected = true
-                } else {
-                    print("NEGROKO: A valid image wasn't selected")
-                }
-                imagePicker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageAdd.image = image
+            imageSelected = true
+        } else {
+            print("NEGROKO: A valid image wasn't selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     
@@ -109,6 +172,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         guard let img = imageAdd.image, imageSelected == true else {
             print("NEGROKO: An image must be selected")
+            self.postToFirebase(imgUrl: "")  // Post without an image 
             return
         }
         
@@ -136,14 +200,21 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     func postToFirebase(imgUrl: String) {
-        let post: Dictionary<String, AnyObject> = [
-            "caption": captionField.text! as AnyObject,
-            "imageUrl": imgUrl as AnyObject,
-            "likes": 0 as AnyObject
+        
+        // Make sure the user is logged in
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        
+        let post : [String : Any] = [
+            "caption": captionField.text!,
+            "imageUrl": imgUrl,
+            "likes": 0,
+            "userId" : uid,
+            "inverseTimestamp" : Date().timeIntervalSince1970 * -1.0
         ]
         
-        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
-        firebasePost.setValue(post)
+        if let firebasePost = DataService.ds.REF_MY_POSTS?.childByAutoId() {
+            firebasePost.setValue(post)
+        }
         
         captionField.text = ""
         imageSelected = false
@@ -160,16 +231,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     // as AnyObject
 }

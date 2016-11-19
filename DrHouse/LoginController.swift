@@ -15,6 +15,19 @@ import SwiftKeychainWrapper
 
 // REMEMBER ADD ALERTS WHEN ERRORS
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        //if having issues in tableView didSelectRow uncomment this
+        //tap.cancelsTouchesInView = false
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class LoginController: UIViewController {
     
     @IBOutlet weak var emailField: UpgradedField!
@@ -23,6 +36,9 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // to hide keyboward in every UIViewController, all you have to do is call this function
+        self.hideKeyboardWhenTappedAround()
+ 
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,8 +117,19 @@ class LoginController: UIViewController {
         DataService.ds.createdFireBaseDBUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("NEGROKO: Data saved to Keychain \(keychainResult)")
-        performSegue(withIdentifier: "goToFeed", sender: nil)
+        
+        // Check the user name
+        DataService.ds.REF_USERS.child(id).child("username").observeSingleEvent(of: .value, with: {
+            snapshot in
+            // If the username has been already set
+            if let _ = snapshot.value as? String {
+                // Go to the feed
+                self.performSegue(withIdentifier: "goToFeed", sender: nil)
+            } else {
+                // Else make the user fill their profile
+                self.performSegue(withIdentifier: "goToEditProfile", sender: nil)
+            }
+        })
     }
-    
     
 }

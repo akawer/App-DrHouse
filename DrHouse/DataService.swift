@@ -33,6 +33,13 @@ class DataService {
         return _REF_POSTS
     }
     
+    var REF_MY_POSTS: FIRDatabaseReference? {
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            return _REF_POSTS.child(uid)
+        }
+        return nil
+    }
+    
     var REF_USERS: FIRDatabaseReference {
         return _REF_USERS
     }

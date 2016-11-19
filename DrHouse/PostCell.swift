@@ -17,6 +17,11 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var caption : UITextView!
     @IBOutlet weak var likesLbl : UILabel!
     @IBOutlet weak var likeImg: UIImageView!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timestampLabel: TimestampLabel!
+    
+    var userReference: FIRDatabaseReference?
+    var userHandle: FIRDatabaseHandle?
     
     var post: Post!
     var likesRef: FIRDatabaseReference!
@@ -35,25 +40,26 @@ class PostCell: UITableViewCell {
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         self.caption.text = post.caption
         self.likesLbl.text = "\(post.likes)"
+        self.postImg.image = nil
+        self.usernameLbl.text = nil
+        self.profileImg.image = nil
         
+        // Set the post image
         if img != nil {
             self.postImg.image = img
+            imageHeightConstraint.constant = 150.0
         } else {
-            let ref = FIRStorage.storage().reference(forURL: post.imageUrl)
-            ref.data(withMaxSize: 2 * 5000 * 5000, completion: { (data, error) in
-                if error != nil {
-                    print("NEGROKO: Unable to download image from Firebase storage")
-                } else {
-                    print("NEGROKO: Image downloaded from Firebase storage")
-                    if let imgData = data {
-                        if let img = UIImage(data: imgData) {
-                            self.postImg.image = img
-                            FeedVC.imageCache.setObject(img, forKey: post.imageUrl as NSString)
-                        }
-                    }
-                }
-            })
+            if post.imageUrl.characters.count > 0 {
+                imageHeightConstraint.constant = 150.0
+            
+                postImg.setImage(post: post)
+            } else {
+                imageHeightConstraint.constant = 0.0
+            }
         }
+        layoutIfNeeded()
+        
+        // Set the like status
         likesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.likeImg.image = UIImage(named: "empty-heart")
@@ -61,7 +67,33 @@ class PostCell: UITableViewCell {
                 self.likeImg.image = UIImage(named: "filled-heart")
             }
         })
-   
+        
+        // Clean the user's observing
+        if let handle = userHandle, let ref = userReference {
+            ref.removeObserver(withHandle: handle)
+        }
+        
+        // If the post has a userId
+        if let uid = post.userId {
+            // Get the user info
+            userReference = DataService.ds.REF_USERS.child(uid)
+            userHandle = userReference?.observe(.value, with: { (snapshot) in
+                if let value = snapshot.value as? [String : Any] {
+                    // Assign the username
+                    self.usernameLbl.text = value["username"] as? String
+                    
+                    // Download the profile Image (or fetch it from the cache if available)
+                    if let url = value["imageUrl"] as? String {
+                        self.profileImg.setImage(firebaseURL: url)
+                    }
+                }
+            })
+        }
+        
+        // Set the timestamp
+        if let timestamp = post.timestamp {
+            timestampLabel.configure(timestamp)
+        }
     }
     
     func likeTapped(sender: UITapGestureRecognizer) {
