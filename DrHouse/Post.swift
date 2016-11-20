@@ -12,19 +12,11 @@ import Firebase
 class Post {
     public private(set) var caption: String!
     public private(set) var imageUrl: String!
-    private var _likes: Int!
+    public private(set)  var likes: Int = 0
     private var _postKey: String!
     var postRef: FIRDatabaseReference!
     var userId : String?
     var timestamp : Date?
-    
-//    var imageUrl: String {
-//        return _imageUrl
-//    }
-    
-    var likes: Int {
-        return _likes
-    }
     
     var postKey: String {
         return _postKey
@@ -33,7 +25,7 @@ class Post {
     init(caption: String, imageUrl: String, likes: Int) {
         self.caption = caption
         self.imageUrl = imageUrl
-        self._likes = likes
+        self.likes = likes
     }
     
     init(postKey: String, postData: Dictionary<String, AnyObject>) {
@@ -47,9 +39,7 @@ class Post {
             self.imageUrl = imageUrl
         }
         
-        if let likes = postData["likes"] as? Int{
-            self._likes = likes
-        }
+        self.likes = postData["likes"] as? Int ?? 0
         
         userId = postData["userId"] as? String
         if let inverseTimestamp = postData["inverseTimestamp"] as? Double {
@@ -61,11 +51,11 @@ class Post {
     
     func adjustLikes(addLike: Bool) {
         if addLike {
-            _likes = _likes + 1
+            likes = likes + 1
         } else {
-            _likes = likes - 1
+            likes = likes - 1
         }
-        postRef.child("likes").setValue(_likes)
+        postRef.child("likes").setValue(likes)
         
     }
     

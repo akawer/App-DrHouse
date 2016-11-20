@@ -10,18 +10,36 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FilterTableViewControllerDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var imageAdd: CircularView!
-    @IBOutlet weak var captionField: UpgradedField!
+    // -------------------------
+    // MARK - Properties
+    // -------------------------
+    
+    var tag : String?
     
     var posts = [Post]()
+    
+    var filters : Filters?
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     var imageSelected = false
     
+    // Handling the Firebase observation
+    var queries = [FIRDatabaseHandle : FIRDatabaseQuery]()
+    
+    // -------------------------
+    // MARK - Outlets
+    // -------------------------
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageAdd: CircularView!
+    @IBOutlet weak var captionField: UpgradedField!
+    
+    
+    // -------------------------
+    // MARK - Lifecycle
+    // -------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,57 +55,96 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
+        startObserving()
+    }
+    
+    // -------------------------
+    // MARK - Posts observation
+    // -------------------------
+    
+    func stopObservingPosts() {
+        // Clean the posts observing
+        for (handle, query) in queries {
+            query.removeObserver(withHandle: handle)
+        }
+    }
+    
+    func observePosts(ref: FIRDatabaseReference) {
+        var query : FIRDatabaseQuery!
+        var handle : FIRDatabaseHandle!
+        if let endDate = filters?.endDate, let startDate = filters?.startDate {
+            query = ref.queryOrdered(byChild: "inverseTimestamp").queryEnding(atValue: startDate.timeIntervalSince1970 * -1).queryStarting(atValue: endDate.timeIntervalSince1970 * -1)
+        } else {
+            query = ref.queryOrderedByKey()
+        }
         
-        if let ref = DataService.ds.REF_MY_POSTS {
+        // Observe new datastartDate
+        handle = query.observe(.childAdded, with: { (snapshot) in
             
-            // Observe new data
-            ref.observe(.childAdded, with: { (snapshot) in
+            DispatchQueue.main.async {
+                if snapshot.exists() {
+                    
+                    
+                    if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
+                        let key = snapshot.key
+                        let post = Post(postKey: key, postData: postDict)
+                        post.postRef = snapshot.ref
+                        self.posts.insert(post, at: 0)
+                    }
+                    
+                }
+                self.posts.sort(by: { ($0.timestamp?.timeIntervalSince1970 ?? 0) > ($1.timestamp?.timeIntervalSince1970 ?? 0)})
+                self.tableView.reloadData()
+            }
+        })
+        queries[handle] = query
+        
+        // Observe changes
+        handle = query.observe(.childChanged, with: { (snapshot: FIRDataSnapshot) in
+            if snapshot.exists() {
                 
                 DispatchQueue.main.async {
-                    if snapshot.exists() {
+                    if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
+                        let key = snapshot.key
                         
-                            
-                        if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
-                            let key = snapshot.key
-                            let post = Post(postKey: key, postData: postDict)
-                            post.postRef = snapshot.ref
-                            self.posts.insert(post, at: 0)
+                        // Replace the old post with a new one
+                        var index = 0
+                        for post in self.posts {
+                            if key == post.postKey {
+                                break
+                            }
+                            index += 1
                         }
+                        self.posts.remove(at: index)
                         
+                        let post = Post(postKey: key, postData: postDict)
+                        post.postRef = snapshot.ref
+                        self.posts.insert(post, at: index)
                     }
                     self.tableView.reloadData()
                 }
-            })
-            
-            // Observe changes
-            ref.observe(.childChanged, with: { (snapshot: FIRDataSnapshot) in
-                if snapshot.exists() {
-                    
-                    DispatchQueue.main.async {
-                        if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
-                            let key = snapshot.key
-                            
-                            // Replace the old post with a new one
-                            var index = 0
-                            for post in self.posts {
-                                if key == post.postKey {
-                                    break
-                                }
-                                index += 1
-                            }
-                            self.posts.remove(at: index)
-                            
-                            let post = Post(postKey: key, postData: postDict)
-                            post.postRef = snapshot.ref
-                            self.posts.insert(post, at: index)
-                        }
-                        self.tableView.reloadData()
-                    }
+            }
+        })
+        queries[handle] = query
+    }
+    
+    func startObserving() {
+        // Stop observing all the previous queries so we can start again
+        stopObservingPosts()
+        
+        if let filters = filters, filters.tags.count > 0 {
+            // Observe tag specific posts
+            for tag in filters.tags {
+                if let ref = DataService.ds.REF_MY_POSTS_TAG_INDEX?.child(tag) {
+                    observePosts(ref: ref)
                 }
-            })
+            }
+        } else {
+            // Observe all posts
+            if let ref = DataService.ds.REF_MY_POSTS {
+                observePosts(ref: ref)
+            }
         }
-        
-        
     }
     
     // -------------------------
@@ -170,6 +227,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             return
         }
         
+        let tags = ["Med", "Vac", "Sym"]
+        for tag in tags {
+            if caption.hasPrefix(tag) {
+                self.tag = tag
+            }
+        }
+        
         guard let img = imageAdd.image, imageSelected == true else {
             print("NEGROKO: An image must be selected")
             self.postToFirebase(imgUrl: "")  // Post without an image 
@@ -204,18 +268,25 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         // Make sure the user is logged in
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         
+        let inverseTimestamp = Date().timeIntervalSince1970 * -1.0
+        
         let post : [String : Any] = [
             "caption": captionField.text!,
             "imageUrl": imgUrl,
             "likes": 0,
             "userId" : uid,
-            "inverseTimestamp" : Date().timeIntervalSince1970 * -1.0
+            "inverseTimestamp" : inverseTimestamp
         ]
         
         if let firebasePost = DataService.ds.REF_MY_POSTS?.childByAutoId() {
             firebasePost.setValue(post)
+            // Add the post to the tag index of the current user
+            if let tag = tag {
+                DataService.ds.REF_MY_POSTS_TAG_INDEX?.child(tag).child(firebasePost.key).setValue(post)
+            }
         }
         
+        tag = nil
         captionField.text = ""
         imageSelected = false
         imageAdd.image = UIImage(named: "add-image")
@@ -232,17 +303,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     
+    // -------------------------
+    // MARK - FilterTableViewControllerDelegate
+    // -------------------------
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func didApply(filters: Filters) {
+        self.filters = filters
+        posts.removeAll()
+        tableView.reloadData()
+        startObserving()
+    }
     
     
-    // as AnyObject
+    // -------------------------
+    // MARK - Navigation
+    // -------------------------
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navc = segue.destination as? UINavigationController, let vc = navc.topViewController as? FilterTableViewController {
+            vc.delegate = self
+        }
+    }
+
 }

@@ -13,6 +13,26 @@ import SwiftKeychainWrapper
 let DB_BASE = FIRDatabase.database().reference()
 let STORAGE_BASE = FIRStorage.storage().reference()
 
+/*
+ 
+ Content Filtering - tags
+ 1. Create index and organize content in the index so that it is easily fetchable
+ 2. Fetch the index
+ 3. Maintain the index
+ 
+ FullText Search
+ 1. Index the content with key as a path and text as a value
+    The content can be categorized by the letters it contains (very hardcore optimization)
+ 2. Download all the relevant text
+ 3. Perform search locally
+ 
+ or 
+ 
+ Implement elastic search
+
+ 
+ */
+
 class DataService {
     
     static let ds = DataService()
@@ -20,6 +40,7 @@ class DataService {
     // DB references
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
+    public private(set) var REF_POSTS_TAG_INDEX = DB_BASE.child("postTagIndex")
     private var _REF_USERS = DB_BASE.child("users")
     
     // Storage references
@@ -31,6 +52,13 @@ class DataService {
     
     var REF_POSTS: FIRDatabaseReference {
         return _REF_POSTS
+    }
+    
+    var REF_MY_POSTS_TAG_INDEX: FIRDatabaseReference? {
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            return REF_POSTS_TAG_INDEX.child(uid)
+        }
+        return nil
     }
     
     var REF_MY_POSTS: FIRDatabaseReference? {

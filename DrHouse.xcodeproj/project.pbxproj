@@ -14,6 +14,7 @@
 		28324B101DB93D94007989AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28324B0F1DB93D94007989AF /* Assets.xcassets */; };
 		28324B131DB93D94007989AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28324B111DB93D94007989AF /* LaunchScreen.storyboard */; };
 		2834AA4A1DCACF13009FF7C9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2834AA491DCACF13009FF7C9 /* LoginController.swift */; };
+		28410DBB1DE0FE70005E93F1 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28410DBA1DE0FE70005E93F1 /* FilterTableViewController.swift */; };
 		287686F01DD0B7A200EE4E3F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287686EF1DD0B7A200EE4E3F /* PostCell.swift */; };
 		2879B4D21DD1ECEB006E7418 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879B4D11DD1ECEB006E7418 /* DataService.swift */; };
 		2879B4D41DD1FD34006E7418 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2879B4D31DD1FD34006E7418 /* Post.swift */; };
@@ -41,6 +42,7 @@
 		28324B121DB93D94007989AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28324B141DB93D94007989AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2834AA491DCACF13009FF7C9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		28410DBA1DE0FE70005E93F1 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		287686EF1DD0B7A200EE4E3F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		2879B4D11DD1ECEB006E7418 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		2879B4D31DD1FD34006E7418 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				2834AA491DCACF13009FF7C9 /* LoginController.swift */,
 				289634461DCBC4A600425B3D /* FeedVC.swift */,
 				28F53F111DDFCC57009D5947 /* EditProfileVC.swift */,
+				28410DBA1DE0FE70005E93F1 /* FilterTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				28CFF5321DCB580A007E1A2D /* UpgradedView.swift in Sources */,
 				28324B091DB93D94007989AF /* AppDelegate.swift in Sources */,
 				2879B4D21DD1ECEB006E7418 /* DataService.swift in Sources */,
+				28410DBB1DE0FE70005E93F1 /* FilterTableViewController.swift in Sources */,
 				289634471DCBC4A600425B3D /* FeedVC.swift in Sources */,
 				28F53F161DDFD987009D5947 /* TimestampLabel.swift in Sources */,
 				28CFF5391DCB5CD0007E1A2D /* UpgradedField.swift in Sources */,
