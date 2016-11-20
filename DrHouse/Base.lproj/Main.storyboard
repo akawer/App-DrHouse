@@ -177,7 +177,7 @@
                                         <rect key="frame" x="0.0" y="109" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="85c-G9-NBt" id="yMA-Bj-lG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="pgi-go-BC6" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
@@ -203,7 +203,7 @@
                                         <rect key="frame" x="0.0" y="177" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bl-T1-BNy" id="02b-fB-Ipz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-Li-7Ve">
@@ -232,7 +232,7 @@
                                         <rect key="frame" x="0.0" y="221" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgn-El-qni" id="GId-uf-tkW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-nm-i3V">
@@ -376,14 +376,48 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-WI-mhn">
+                                        <rect key="frame" x="66" y="8" width="218" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMa-dN-aGt">
+                                                <rect key="frame" x="0.0" y="9" width="63" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Medicine"/>
+                                                <connections>
+                                                    <action selector="tagButtonTapped:" destination="sUy-bM-7T9" eventType="touchUpInside" id="aBw-MV-yw0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQL-7R-bJt">
+                                                <rect key="frame" x="76" y="9" width="66" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Symptom"/>
+                                                <connections>
+                                                    <action selector="tagButtonTapped:" destination="sUy-bM-7T9" eventType="touchUpInside" id="27w-Aq-Dmf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-tg-FuM">
+                                                <rect key="frame" x="153" y="9" width="54" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Vaccine"/>
+                                                <connections>
+                                                    <action selector="tagButtonTapped:" destination="sUy-bM-7T9" eventType="touchUpInside" id="BP7-F5-8AP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="tlI-WI-mhn" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="top" constant="8" id="6Ut-7x-vmh"/>
                                     <constraint firstAttribute="bottom" secondItem="rXA-1m-Vvi" secondAttribute="bottom" constant="8" id="EC4-dT-bCR"/>
                                     <constraint firstAttribute="trailing" secondItem="rXA-1m-Vvi" secondAttribute="trailing" constant="8" id="GRw-Ag-KoL"/>
                                     <constraint firstItem="rXA-1m-Vvi" firstAttribute="leading" secondItem="M4B-Re-jQQ" secondAttribute="leading" constant="8" id="ROr-WQ-dw3"/>
+                                    <constraint firstAttribute="bottom" secondItem="tlI-WI-mhn" secondAttribute="bottom" constant="8" id="RmB-wC-tRp"/>
                                     <constraint firstItem="rXA-1m-Vvi" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="top" constant="8" id="WIX-sf-fYP"/>
+                                    <constraint firstAttribute="trailing" secondItem="tlI-WI-mhn" secondAttribute="trailing" constant="59" id="f5q-Dy-xG6"/>
                                     <constraint firstAttribute="height" constant="65" id="mgU-wV-c0O"/>
+                                    <constraint firstItem="tlI-WI-mhn" firstAttribute="leading" secondItem="M4B-Re-jQQ" secondAttribute="leading" constant="66" id="tIb-sX-H17"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="339" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lxq-ff-v7W">
@@ -523,6 +557,7 @@
                         <outlet property="captionField" destination="D5R-Gz-swb" id="5U4-tG-Bzk"/>
                         <outlet property="imageAdd" destination="9N0-I0-wht" id="f3x-Lu-XTW"/>
                         <outlet property="tableView" destination="Lxq-ff-v7W" id="slj-Bh-Fzb"/>
+                        <outlet property="tagContainerView" destination="tlI-WI-mhn" id="Vbz-07-QEU"/>
                         <segue destination="JEj-aN-Zxc" kind="show" identifier="goToSignIn" id="Z5E-TK-m56"/>
                     </connections>
                 </viewController>
@@ -555,11 +590,11 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ho1-S5-kYE" id="fjk-Fy-yWR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Medicine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6aZ-m7-cfm">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -572,11 +607,11 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zaa-bB-SD7" id="C8l-L8-dCc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Symptom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xyx-xk-VTv">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -589,11 +624,11 @@
                                         <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmF-EP-kDI" id="Thx-3a-WoK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Vaccine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NYa-3e-f7s">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

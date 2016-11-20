@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FilterTableViewControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FilterTableViewControllerDelegate, UITextFieldDelegate {
     
     // -------------------------
     // MARK - Properties
@@ -45,6 +45,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
+        
+        captionField.delegate = self
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -217,7 +219,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     @IBAction func addImageTapped(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
+        let actionSheet = UIAlertController(title: "Pick an image", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     
@@ -290,6 +303,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         captionField.text = ""
         imageSelected = false
         imageAdd.image = UIImage(named: "add-image")
+        tagContainerView.isHidden = false
         
         tableView.reloadData()
     }
@@ -302,6 +316,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
+    @IBOutlet weak var tagContainerView: UIView!
+    @IBAction func tagButtonTapped(_ sender: UIButton) {
+        let tag = (sender.title(for: .normal)! as NSString).substring(to: 3)
+        captionField.text = tag + " "
+        captionField.becomeFirstResponder()
+        tagContainerView.isHidden = true
+    }
     
     // -------------------------
     // MARK - FilterTableViewControllerDelegate
@@ -325,4 +346,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
 
+    // -------------------------
+    // MARK - UITextFieldDelegate
+    // -------------------------
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let finalText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if finalText.characters.count < 4 {
+            textField.text = ""
+            textField.resignFirstResponder()
+            tagContainerView.isHidden = false
+        }
+        
+        return true
+    }
+    
 }
