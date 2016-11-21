@@ -177,7 +177,7 @@
                                         <rect key="frame" x="0.0" y="109" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="85c-G9-NBt" id="yMA-Bj-lG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="pgi-go-BC6" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
@@ -203,7 +203,7 @@
                                         <rect key="frame" x="0.0" y="177" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bl-T1-BNy" id="02b-fB-Ipz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-Li-7Ve">
@@ -232,7 +232,7 @@
                                         <rect key="frame" x="0.0" y="221" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgn-El-qni" id="GId-uf-tkW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-nm-i3V">
@@ -307,7 +307,7 @@
                                             <constraint firstAttribute="height" constant="35" id="SYJ-de-n63"/>
                                             <constraint firstAttribute="width" constant="40" id="b7h-1Z-rrE"/>
                                         </constraints>
-                                        <state key="normal" image="add-post"/>
+                                        <state key="normal" image="settings"/>
                                         <connections>
                                             <segue destination="cCf-Bj-9bV" kind="show" id="kX0-an-BIb"/>
                                         </connections>
@@ -344,9 +344,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rXA-1m-Vvi">
                                         <rect key="frame" x="8" y="8" width="327" height="49"/>
                                         <subviews>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="9N0-I0-wht" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="9N0-I0-wht" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
                                                 <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="R2o-ju-E73"/>
@@ -453,7 +454,7 @@
                                                                             <color key="textColor" red="0.86666666670000003" green="0.17254901959999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-SG-UWV">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-star" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-SG-UWV">
                                                                             <rect key="frame" x="267" y="0.0" width="60" height="60"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="60" id="frg-iX-n12"/>
@@ -718,17 +719,18 @@
     </scenes>
     <resources>
         <image name="DrHouseLogo_White" width="395" height="140"/>
-        <image name="Filter" width="25" height="25"/>
+        <image name="Filter" width="50" height="50"/>
         <image name="add-image" width="88" height="88"/>
         <image name="add-post" width="88" height="88"/>
-        <image name="empty-heart" width="70" height="70"/>
+        <image name="empty-star" width="50" height="50"/>
         <image name="f" width="352" height="328"/>
         <image name="placeholder" width="934" height="747"/>
         <image name="profile" width="637" height="637"/>
-        <image name="sign-out" width="92" height="65"/>
+        <image name="settings" width="15" height="15"/>
+        <image name="sign-out" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kX0-an-BIb"/>
         <segue reference="y3O-dL-Qvv"/>
+        <segue reference="AOs-Jx-HGM"/>
     </inferredMetricsTieBreakers>
 </document>
