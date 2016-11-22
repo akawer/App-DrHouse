@@ -13,7 +13,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftKeychainWrapper
 
-// REMEMBER ADD ALERTS WHEN ERRORS
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -51,7 +50,6 @@ class LoginController: UIViewController {
     // maybe delete this function to avoid unnecessary warnings
     override func didReceiveMemoryWarning() {
         super.viewDidLoad()
-        //Do any additional bla bla
     }
     // MARK: - Functions
     
