@@ -657,21 +657,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbo-mL-xSn">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbo-mL-xSn">
                                                     <rect key="frame" x="17" y="8" width="153" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-cs-n0O">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-cs-n0O">
                                                     <rect key="frame" x="192" y="6" width="167" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tDL-cs-n0O" secondAttribute="trailing" constant="16" id="Ez6-uk-fRQ"/>
+                                                <constraint firstItem="tDL-cs-n0O" firstAttribute="top" secondItem="vcI-eF-Kg0" secondAttribute="top" constant="6" id="RS0-bP-Bhh"/>
+                                                <constraint firstItem="gbo-mL-xSn" firstAttribute="top" secondItem="vcI-eF-Kg0" secondAttribute="top" constant="8" id="gyG-zP-s2w"/>
+                                                <constraint firstItem="tDL-cs-n0O" firstAttribute="leading" secondItem="gbo-mL-xSn" secondAttribute="trailing" constant="22" id="hMl-YA-Fuk"/>
+                                                <constraint firstItem="gbo-mL-xSn" firstAttribute="leading" secondItem="vcI-eF-Kg0" secondAttribute="leading" constant="17" id="sSo-GW-jc3"/>
+                                                <constraint firstItem="tDL-cs-n0O" firstAttribute="width" secondItem="gbo-mL-xSn" secondAttribute="width" constant="14" id="zrk-lO-b5V"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -739,6 +745,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y3O-dL-Qvv"/>
-        <segue reference="AOs-Jx-HGM"/>
+        <segue reference="kX0-an-BIb"/>
     </inferredMetricsTieBreakers>
 </document>

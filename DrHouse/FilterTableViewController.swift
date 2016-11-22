@@ -123,4 +123,5 @@ class FilterTableViewController: UITableViewController {
     func startDatePickerValueChanged(datePicker: UIDatePicker) {
         startDateTextField.text = formatted(date: datePicker.date)
     }
+    
 }
