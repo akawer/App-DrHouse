@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,26 +70,35 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mMh-Q3-vXF">
-                                <rect key="frame" x="26" y="218" width="323" height="124"/>
+                                <rect key="frame" x="26" y="218" width="323" height="134"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylu-2d-qP3" customClass="UpgradedField" customModule="DrHouse" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="dt4-x6-Gnc"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBd-LR-Ryh" customClass="UpgradedField" customModule="DrHouse" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="323" height="25"/>
+                                        <rect key="frame" x="0.0" y="45" width="323" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="o3A-Ot-HZo"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="U9v-f1-n5p">
-                                        <rect key="frame" x="0.0" y="80" width="323" height="44"/>
+                                        <rect key="frame" x="0.0" y="90" width="323" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMT-kQ-q6N" customClass="UpgradedButton" customModule="DrHouse" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="44"/>
                                                 <color key="backgroundColor" red="0.8666666666666667" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="KIN-Qo-eOP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <state key="normal" title="Sign In">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,6 +111,7 @@
                                                 <rect key="frame" x="279" y="0.0" width="44" height="44"/>
                                                 <color key="backgroundColor" red="0.25490196078431371" green="0.36078431372549019" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="eWC-eG-i16"/>
                                                     <constraint firstAttribute="width" constant="44" id="mKZ-y4-Nzw"/>
                                                 </constraints>
                                                 <state key="normal" image="f"/>
@@ -115,7 +126,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="124" id="K2w-cg-fRu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="124" id="K2w-cg-fRu"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -161,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A4f-nV-RNk" id="1cD-iH-09c">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFD-8P-BIQ">
@@ -194,7 +205,7 @@
                                         <rect key="frame" x="0.0" y="109" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="85c-G9-NBt" id="yMA-Bj-lG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="pgi-go-BC6" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
@@ -220,7 +231,7 @@
                                         <rect key="frame" x="0.0" y="177" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bl-T1-BNy" id="02b-fB-Ipz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-Li-7Ve">
@@ -249,7 +260,7 @@
                                         <rect key="frame" x="0.0" y="221" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tgn-El-qni" id="GId-uf-tkW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-nm-i3V">
@@ -362,30 +373,32 @@
                                         <rect key="frame" x="8" y="8" width="327" height="49"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="9N0-I0-wht" customClass="CircularView" customModule="DrHouse" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="49"/>
                                                 <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="49" id="R2o-ju-E73"/>
-                                                    <constraint firstAttribute="height" constant="49" id="ztH-cX-dBO"/>
+                                                    <constraint firstAttribute="width" secondItem="9N0-I0-wht" secondAttribute="height" multiplier="48:49" id="22S-Y2-ahg"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="49" id="R2o-ju-E73"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="49" id="ztH-cX-dBO"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="Jeq-6s-iFX" appends="YES" id="kdr-CB-nO5"/>
                                                 </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Meds|Symptom|Vaccine" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5R-Gz-swb" customClass="UpgradedField" customModule="DrHouse" customModuleProvider="target">
-                                                <rect key="frame" x="59" y="0.0" width="209" height="49"/>
+                                                <rect key="frame" x="58" y="0.0" width="218" height="49"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-mf-h57" customClass="RoundButton" customModule="DrHouse" customModuleProvider="target">
-                                                <rect key="frame" x="278" y="0.0" width="49" height="49"/>
+                                                <rect key="frame" x="286" y="0.0" width="41" height="49"/>
                                                 <color key="backgroundColor" red="0.8666666666666667" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="49" id="F9S-D5-TW4"/>
-                                                    <constraint firstAttribute="width" constant="49" id="x9d-34-Z3W"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="49" id="F9S-D5-TW4"/>
+                                                    <constraint firstAttribute="width" secondItem="I0S-mf-h57" secondAttribute="height" multiplier="41:49" id="Phw-ih-V0x"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="49" id="x9d-34-Z3W"/>
                                                 </constraints>
                                                 <state key="normal" image="add-post"/>
                                                 <connections>
@@ -431,12 +444,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="tlI-WI-mhn" firstAttribute="width" secondItem="D5R-Gz-swb" secondAttribute="width" id="2xu-Q6-pV6"/>
                                     <constraint firstItem="tlI-WI-mhn" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="top" constant="8" id="6Ut-7x-vmh"/>
                                     <constraint firstAttribute="bottom" secondItem="rXA-1m-Vvi" secondAttribute="bottom" constant="8" id="EC4-dT-bCR"/>
                                     <constraint firstAttribute="trailing" secondItem="rXA-1m-Vvi" secondAttribute="trailing" constant="8" id="GRw-Ag-KoL"/>
                                     <constraint firstItem="rXA-1m-Vvi" firstAttribute="leading" secondItem="M4B-Re-jQQ" secondAttribute="leading" constant="8" id="ROr-WQ-dw3"/>
                                     <constraint firstAttribute="bottom" secondItem="tlI-WI-mhn" secondAttribute="bottom" constant="8" id="RmB-wC-tRp"/>
                                     <constraint firstItem="rXA-1m-Vvi" firstAttribute="top" secondItem="M4B-Re-jQQ" secondAttribute="top" constant="8" id="WIX-sf-fYP"/>
+                                    <constraint firstItem="D5R-Gz-swb" firstAttribute="leading" secondItem="tlI-WI-mhn" secondAttribute="leading" id="biT-VB-As5"/>
                                     <constraint firstAttribute="trailing" secondItem="tlI-WI-mhn" secondAttribute="trailing" constant="59" id="f5q-Dy-xG6"/>
                                     <constraint firstAttribute="height" constant="65" id="mgU-wV-c0O"/>
                                     <constraint firstItem="tlI-WI-mhn" firstAttribute="leading" secondItem="M4B-Re-jQQ" secondAttribute="leading" constant="66" id="tIb-sX-H17"/>
@@ -667,7 +682,7 @@
                                         <rect key="frame" x="0.0" y="245" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8hF-NM-Vf3" id="vcI-eF-Kg0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbo-mL-xSn">
@@ -757,7 +772,7 @@
         <image name="sign-out" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O1g-bE-efk"/>
-        <segue reference="kX0-an-BIb"/>
+        <segue reference="y3O-dL-Qvv"/>
+        <segue reference="AOs-Jx-HGM"/>
     </inferredMetricsTieBreakers>
 </document>
