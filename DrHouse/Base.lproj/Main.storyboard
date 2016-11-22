@@ -393,6 +393,10 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="D5R-Gz-swb" firstAttribute="leading" secondItem="9N0-I0-wht" secondAttribute="trailing" constant="10" id="2dE-g2-nFy"/>
+                                            <constraint firstItem="I0S-mf-h57" firstAttribute="leading" secondItem="D5R-Gz-swb" secondAttribute="trailing" constant="10" id="QFl-rO-WiK"/>
+                                        </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlI-WI-mhn">
                                         <rect key="frame" x="66" y="8" width="218" height="49"/>
